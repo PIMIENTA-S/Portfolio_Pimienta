@@ -1,6 +1,6 @@
 body{
     color: white;
-    font-family:"Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 #space{
@@ -8,6 +8,12 @@ body{
     position: fixed;
     inset: 0;
     z-index: -1;
+    display: flex;
+    justify-content: center;
+}
+
+#space .logo{
+    filter: brightness(0);
 }
 
 .main{
@@ -32,6 +38,17 @@ body{
     gap: 70px;
 }
 
+.sidebar .sidebar-content .one h1{
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.sidebar .sidebar-content .one .subtitle{
+    font-weight: 500;
+    font-size: 20px;
+    color: gray;
+}
+
 .sidebar .sidebar-content .contacto {
     display: flex;
     gap: 15px;
@@ -54,7 +71,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 9%;
 }
 
 .main-rigth #about, #xp, #experience, #contact{
