@@ -4,20 +4,23 @@ body{
 }
 
 #space{
-    background-image: linear-gradient(#051327, #000);
+    /* background-image: linear-gradient(#051327, #000); */
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: -2;
     display: flex;
     justify-content: center;
 }
 
 #space .logo{
-    filter: brightness(0);
+    filter: brightness(60%);
+    opacity: 0.6;
 }
 
 .main{
     display: flex;
+    z-index: 100;
 }
 
 .sidebar {
@@ -26,9 +29,11 @@ body{
     width: 50%;
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
+    /* border: 1px solid white; */
+    padding: 0 5%;
     
 }
 
@@ -41,6 +46,7 @@ body{
 .sidebar .sidebar-content .one h1{
     font-size: 50px;
     font-weight: 900;
+    color: #d7710f;
 }
 
 .sidebar .sidebar-content .one .subtitle{
@@ -49,6 +55,10 @@ body{
     color: gray;
 }
 
+/* .sidebar .sidebar-content .one p{
+    max-width: 70%;
+} */
+
 .sidebar .sidebar-content .contacto {
     display: flex;
     gap: 15px;
@@ -56,14 +66,64 @@ body{
     align-items: center;
 }
 
+.sidebar nav a {
+    position: relative;
+    text-decoration: none;
+    color: #aaa;
+    display: inline-block;
+    padding-left: 30px;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  /* creacion de la barra latera */
+  .sidebar nav a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #d7710f;
+    transition: width 0.3s ease;
+  }
+  
+  .sidebar nav a:hover,
+  .sidebar nav a.active {
+    color: #d7710f;
+    transform: translateX(20px);
+  }
+  
+  .sidebar nav a:hover::before,
+  .sidebar nav a.active::before {
+    width: 20px;
+  }
+  
+
 .sidebar .sidebar-content .contacto a{
     font-size: 30px;
+    color: white;
+    transition: all .5s ease;
+}
+
+.sidebar .sidebar-content .contacto a:hover{
+    color: #d7710f;
+    transform: scale(1.4);
+    padding: 0 15px;
 }
 
 .sidebar .sidebar-content .contacto button{
-    border-radius: 20px;
+    border-radius: 10px;
     width: 150px;
     height: 30px;
+    transition: all .5s ease;
+}
+
+.sidebar .sidebar-content .contacto button:hover{
+    /* color: #d7710f; */
+    background-color: #d7710f;
+    transform: scale(1.2);
+    margin: 0 15px;
 }
 
 .main-rigth{
@@ -77,6 +137,142 @@ body{
 .main-rigth #about, #xp, #experience, #contact{
     max-width: 80%;
     align-items: center;
+
 }
+
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+    transition: all .5s ease;
+}
+  
+.card-header {
+    margin-bottom: 10px;
+}
+
+.card-header .date {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.card-header .title {
+    color: #9ca3af;
+    font-size: 1.2rem;
+    transition: all .5s ease;
+
+}
+
+.description {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.tags span {
+    display: inline-block;
+    background: #1f2937;
+    color: #9ca3af;
+    padding: 5px 10px;
+    margin: 3px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: all .5s ease;
+
+
+}
+
+.card:hover{
+    transform: scale(1.05);
+    .card-header .title, .tags span{
+        color: #d7710f;
+    }
+
+}
+
+.proyect {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+.proyect-img-container {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.proyect-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    border-radius: 8px;
+    display: block;
+}
+
+.proyect-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+}
+
+.proyect-img-container:hover .proyect-hover {
+    opacity: 1; 
+}
+
+.proyect-info h3 {
+    color: white;
+    margin-bottom: 8px;
+}
+
+.proyect-info p {
+    color: #9ca3af; 
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+
+/* estrellas */
+
+.space{
+    height: var(--size);
+    width: var(--size);
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: wheat;
+    z-index: -1;
+    box-shadow: var(--position);
+    animation: moveStars var(--duration) linear infinite;
+}
+
+@keyframes moveStars {
+    from{
+        transform: translateY(0);
+    } to{
+        transform: translateY(-100vh);
+    }
+    
+}
+
+
+
 
 
